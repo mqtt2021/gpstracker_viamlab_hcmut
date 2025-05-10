@@ -1,0 +1,129 @@
+.fatherObjectTracking{
+    width: 100%;
+    height: 100%;
+    .wrapperObjectTracking{
+        width: 100%;
+        padding: 20px 20px 20px 20px;   
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .toolObjectTracking{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        height: 60px;
+        align-items: center;
+        .divInputFindObjectTracking{
+                width: 70%;     
+        }
+        .divAddObjectTracking{
+                width: 6%; 
+                height: 100%;
+               
+                .iconAddObjectTracking{
+                    font-size: 60px;
+                    color: rgb(0, 0, 0);
+                }
+                
+        }
+
+    }
+    .wrapperContainerObjectTracking{
+        width: 80%;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .containerDevice{
+            border: 1px solid rgb(153, 148, 148);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            border-radius: 10px;   
+            overflow: hidden;
+            
+            display: flex;
+            height: 100px;
+            justify-content: space-between;
+            .itemDevice{
+                display: flex;
+                height: 100%;
+               
+                
+            }
+            .itemDeviceFirst{
+               
+                    width: 40%;
+                    display: flex;
+                    align-items: center;
+                    .divIconDevice{
+                        display: flex;
+                        align-items: center;
+                        width: 20%;
+                       
+                        .iconDevice{
+                            font-size: 50px;
+                            color: rgb(0, 0, 0);
+                        }
+                    }
+                    .divIconNameAndPin{
+                        
+                        width: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        .name{
+                            font-size: 20px;
+                        }
+                        .divIconPin{
+                            display: flex;
+                            align-items: center;
+                             .iconPin{
+                                font-size: 40px;
+                                color: rgb(9, 144, 255);
+                            }  
+                        }                       
+                    }
+
+                    .divStatus{
+                        align-items: center;
+                        color: rgb(84, 225, 108);
+                        font-size: 15px;
+                        font-weight: 600;
+                    }
+            }
+
+            .itemObjectTrackingecond{
+                width: 50%;
+                justify-content: space-around;
+                align-items: center;
+                a{
+                    text-decoration: none;   
+                    width: 30%;
+                    color: black;
+                    .itemObjectTrackingecondItem{  
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    background-color: aliceblue;
+                    border: 2px solid rgb(0, 0, 0);
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 50px;
+                    &:hover{
+                        cursor: pointer;
+
+                    }
+                    .itemObjectTrackingecondItemIcon{
+                        font-size: 30px;
+                        color: red;
+                    }
+                }
+                }
+                
+            }
+        }
+    }
+   
+    }
+    
+}

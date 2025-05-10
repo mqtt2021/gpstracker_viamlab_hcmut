@@ -1,0 +1,288 @@
+.fatherNotification{
+    width: 100%; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    background-color: #f1f2f6;    
+    overflow: auto;
+    .wrapperNotification{  
+        margin-top: 100px;    
+        width: 80%;
+        height: 95%;       
+        display: flex;
+        flex-direction: column;   
+        align-items: center;
+        border-radius: 0px;
+        
+
+        .loadingContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+          }
+          
+          .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.2);
+            border-top-color: #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          }
+          
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+          
+         
+        .TitleNotification{
+            
+            height: 8%;
+            min-height: 60px; /* Đảm bảo tối thiểu 60px */
+            width: 67%;
+            background-color: #ee4f11;
+            display: flex;
+            justify-content: space-between; /* Chia khoảng cách giữa text và icon */
+            align-items: center;
+            position: fixed;
+            top: 0px;
+            z-index: 10; /* Đảm bảo nó nổi lên trên */
+            padding: 0px 15px 0px 15px;
+
+            .TitleNotificationItem{
+                 
+                text-align: center;
+                color: #fff;
+                font-size: 30px;
+                font-weight: 600;
+                flex-grow: 1; /* Đảm bảo text chiếm hết không gian còn lại */ 
+            }
+            .divIconCheckAll{
+                
+                position: relative;
+                float: right; /* Đẩy icon về phía bên phải */
+                .iconCheckAll{
+                        font-size: 40px;
+                        font-weight: 600;
+                        color: #000000;
+                        &:hover{     
+                    
+                            color: #c6c6c6;
+          
+              
+                          }
+                }
+
+                cursor: pointer;
+                
+
+            }
+        }
+
+    a{
+        width: 100%;
+
+        color: inherit; /* Kế thừa màu từ phần tử cha */
+        text-decoration: none; /* Loại bỏ gạch chân */
+
+        .wrapperContainerNotification{   
+        
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .containerDevice{
+                width: 100%;    
+                background-color: #fff;
+                display: flex;
+                height: 100px;
+                justify-content: space-between; 
+                border-bottom: 0.4px solid rgb(163, 161, 161);
+                &:hover{     
+                    cursor: pointer;
+                    background-color: #c6c6c6;
+    
+                }
+                .itemDevice{
+                    display: flex;
+                    height: 100%;
+                }
+                .itemDeviceFirst{
+                        width: 50%;
+                        .divIconDevice{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 30%;
+                            .iconDevice{
+                                font-size: 50px;
+                                color: rgb(252, 0, 0);
+                            }
+                        }
+                        .divIconNameAndPin{
+                            width: 70%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-evenly;
+                            .name{
+                                font-size: 20px;
+                                font-weight: 700;    
+                                font-family: inherit;         
+                            }
+                            .divIconPin{
+                                display: flex;
+                                align-items: center;
+                                font-style: italic;
+                                font-weight: 400;
+                                color: #767676;
+                                font-size: 15px;
+                                 .iconPin{
+                                    font-size: 40px;
+                                    color: rgb(9, 144, 255);
+                                }  
+                            }
+                           
+                        }
+                }
+    
+                .itemNotificationecond{
+                    width: 50%;
+                    justify-content: space-around;
+                    align-items: center;
+                   
+                        .itemNotificationecondItem{  
+                        font-weight: 500;
+                        font-size: 20px;    
+                        .iconAcknownledge{
+                            color: rgb(0, 145, 255);
+                        }  
+                       
+                        }
+                    
+                    
+                }
+    
+    
+                @media (max-width: 768px) {
+    
+    
+                    .itemDeviceFirst{
+                        width: 50%;
+                        
+                        .divIconDevice{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 25%;
+                            .iconDevice{
+                                font-size: 35px;
+                                color: rgb(252, 0, 0);
+                            }
+                        }
+                        .divIconNameAndPin{
+                            width: 75%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-evenly;
+                            .name{
+                                font-size: 15px;
+                                font-weight: 700;    
+                                font-family: inherit;         
+                            }
+                            .divIconPin{
+                                display: flex;
+                                align-items: center;
+                                font-style: italic;
+                                font-weight: 400;
+                                color: #767676;
+                                font-size: 12px;
+                                 .iconPin{
+                                    font-size: 40px;
+                                    color: rgb(9, 144, 255);
+                                }  
+                            }
+                           
+                        }
+                    }
+    
+                    .itemNotificationecond{
+                        width: 50%;
+                        justify-content: space-around;
+                        align-items: center;
+                       
+                            .itemNotificationecondItem{  
+                            font-weight: 500;
+                            font-size: 13px;    
+                            .iconAcknownledge{
+                                color: rgb(0, 145, 255);
+                            }  
+                           
+                            }
+                        
+                        
+                    }
+    
+                }
+            }
+        }
+    }    
+
+    
+
+
+    @media (max-width: 768px) {
+        width: 95%;
+        border-radius: 10px;  
+        margin-top: 0px;
+
+        .TitleNotification{       
+            height: 10%;    
+            width: 80%; 
+            position: fixed;             
+            top: 0px;       
+            right: 3%; 
+            background-color: transparent;  
+            z-index: 5000;         
+            display: flex;   
+            justify-content: space-between; /* Chia khoảng cách giữa text và icon */
+            align-items: center;
+            
+            padding-left: 0px;
+            .TitleNotificationItem{           
+              text-align: center;
+              color: #000000;
+              font-size: 25px;
+              font-weight: 600;  
+              flex-grow: 1; /* Đảm bảo text chiếm hết không gian còn lại */                                      
+            }
+
+            .divIconCheckAll{
+                
+                position: relative;
+                float: right; /* Đẩy icon về phía bên phải */
+                .iconCheckAll{
+                        font-size: 40px;
+                        font-weight: 600;
+                        color: #000000;
+                        &:hover{     
+                    
+                            color: #c6c6c6;
+          
+              
+                          }
+                }
+
+                cursor: pointer;
+                
+
+            }
+        }
+    }
+   
+    }
+    
+}

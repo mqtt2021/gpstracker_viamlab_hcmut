@@ -1,0 +1,212 @@
+
+.containerRegister{
+    height: 100vh;                     
+    width: 100vw;      
+    display: flex;     
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f2f6;  
+    /* Lớp phủ mờ khi loading */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(153, 153, 153, 0.5); /* Màu nền mờ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Đặt lớp phủ trên mọi nội dung khác */
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+   .divLogoSawaco{
+    margin-top: 50px;
+    @media (max-width: 768px) {
+      margin-top: 15px;  
+    }
+   }
+  .wrapperRegister{  
+    background-color: #fff;   
+    margin-top: 30px;      
+    // margin-left: 12vw;   
+    width: 60%;   
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+    .titleRegister{
+      height: 90px;
+      background: #67d0eb;
+      border-radius: 5px 5px 0 0;
+      color: #000000;
+      font-size: 30px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .formRegister{
+      padding: 30px 25px 25px 25px;
+      // background-color: #f6f0f0;     
+
+      .rowRegister{
+        height: 45px;
+        margin-bottom: 15px;
+        position: relative;
+        input{
+          height: 100%;
+          width: 100%;
+          outline: none;
+          padding-left: 60px;
+          border-radius: 5px;
+          border: 1px solid lightgrey;
+          font-size: 16px;
+          transition: all 0.3s ease;
+        }
+
+        i{
+          position: absolute;
+          width: 47px;
+          height: 100%;
+          color: #000000;
+          font-size: 18px;
+          background: #18c2ed;
+          border: 1px solid #18c2ed;  
+          border-radius: 5px 0 0 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .button-loginRegister{
+          appearance: none;
+          backface-visibility: hidden;
+          background-color:  #18c2ed;
+          border-radius: 8px;
+          border-style: none;
+          box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+          box-sizing: border-box;
+          color: #000000;
+          cursor: pointer;
+          display: inline-block;
+          font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: normal;
+          line-height: 1.5;
+          outline: none;
+          overflow: hidden;
+          padding: 13px 20px;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          transform: translate3d(0, 0, 0);
+          transition: all .3s;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          vertical-align: top;
+          white-space: nowrap;
+        
+        
+        &:hover {
+          background-color:  #0993b6;
+          opacity: 1;
+          transform: translateY(0);  
+          transition-duration: .35s;
+          box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+        }
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;   
+        }
+        
+        &:active {
+          transform: translateY(2px);
+          transition-duration: .35s;
+        }
+        
+        
+        }
+      }
+
+      .buttonRegister{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .wrapregister{
+        display: flex;
+        
+        column-gap: 20px;
+        justify-content: center;
+
+        .titleRegister{
+          height: 90px;
+          background: #67d0eb;
+          border-radius: 5px 5px 0 0;
+          color: #000000;
+          font-size: 30px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .containerRegister{   
+          width: 40%;
+          display: flex;
+          justify-content: space-between;
+          a{
+            text-decoration: none;
+            color: #000000;  
+            .buttonRegister{
+                font-style: italic;  
+                font-weight: 600;  
+            &:hover{   
+              cursor: pointer;
+              color: #999;  
+  
+            }
+            }
+          }
+          
+        }
+      }
+    }
+
+
+    @media (max-width: 768px) {
+        width: 90%;
+
+
+
+    }
+
+
+  }
+  }
+ 
+
+   
+
+ 

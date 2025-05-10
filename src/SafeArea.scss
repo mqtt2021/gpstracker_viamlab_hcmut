@@ -1,0 +1,205 @@
+
+.SafeArea{
+    width: 100%;
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loading-overlay {  
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 85vw;
+        height: 100vh;
+        background-color: rgba(153, 153, 153, 0.5); /* Màu nền mờ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5000; /* Đặt lớp phủ trên mọi nội dung khác */
+      
+        @media (max-width: 768px) {
+            width: 100vw;
+        }
+    
+    
+    }
+         
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+    .wrapSafeArea{   
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 20px;
+            .TitleSafeArea{
+                height: 8%;
+                width: 100%;
+                background-color: #ee4f11;  
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .TitleSafeAreaItem{
+                  text-align: center;
+                  color: #fff;
+                  font-size: 30px;
+                  font-weight: 600;          
+                }
+
+                @media (max-width: 768px) {
+                    height: 10%;    
+                    width: 65%; 
+                    position: fixed;             
+                    top: 0px;       
+                    right: 15%; 
+                    background-color: transparent;                      
+                    z-index: 5000;       
+                    display: flex;   
+                    justify-content: center;
+                    align-items: center;   
+                    .TitleSafeAreaItem{             
+                      text-align: center;
+                      color: #000000;
+                      font-size: 22px;
+                      font-weight: 600;                                       
+                    }
+                }
+    
+            }
+            .filter{                
+                width: 100%;
+                height: 10%;
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                // border-radius: 15px;
+                // background-color: #fff;
+                // box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+                .filterItem{
+                    
+                    width: 30%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;   
+                    border-radius: 15px;
+                    background-color: #fff;
+                    box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+                   
+                    .filterItemdiv{
+                        
+                        width: 30%;  
+                        
+                        a{    
+                        text-decoration: none;
+                        color: black;
+                       
+                        .itemObjectSecondItem{  
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        background-color: aliceblue;
+                        border: 0.3px solid rgb(0, 0, 0);
+                        border-radius: 15px;
+                        width: 100%;   
+                        height: 50px;
+                        font-size: 20px;
+                        font-weight: 600;
+                        &:hover{     
+                            cursor: pointer;
+                            background-color: #e1e1e1;
+    
+                        }
+                        .itemObjectSecondItemIcon{
+                            font-size: 30px;
+                            color: red;
+                        }
+                    }
+                    }
+                    }   
+                   
+                    
+                }
+
+
+                @media (max-width: 768px) {
+                    margin-top: 0px;
+                    display: flex;
+                    justify-content: center;
+                    width: 100%; 
+                    height: 20%;                    
+                    .filterItem{
+                        font-weight: 600;
+                        z-index: 3000;
+                        height: 100%;  
+                        width: 100%; 
+                        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+                        border-radius: 10px;                                                      
+                    }
+                  
+                    .filterItemButton{
+                        display: flex;
+                        justify-content: space-around;
+                        button{
+                            width: 30%;
+                            height: 100%;
+                        }
+                    }
+
+                }
+
+            
+               
+               
+            }
+            .mapStolenLine{
+                height: 87%;   
+                width: 100%;   
+                overflow: hidden;
+                border-radius: 20px;
+                .leaflet-container {
+                    height: 100%;  
+                    width: 100%;        
+                }
+            }
+    }  
+   
+   
+
+    @media (max-width: 768px) {
+        margin-top: 0px;
+        position: relative;
+        top: 0px;  
+        width: 100%;  
+        height: 100%; 
+
+        .TitleSafeArea{       
+            
+        }
+
+        
+
+        
+
+    }
+   
+}

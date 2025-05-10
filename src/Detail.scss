@@ -1,0 +1,416 @@
+.fatherInforDetailDevice{
+    width: 100%;
+    height: 100%;    
+    display: flex;                                 
+    justify-content: center;                    
+    align-items: center;
+    overflow: auto;
+
+    .loadingContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .wrapperInforDetailDevice{                                         
+        width: 80%;   
+        height: 100%;
+        
+        //overflow: hidden;
+        // display: flex;
+        // flex-direction: column;                 
+        // align-items: stretch; /* Giãn hết chiều cao */
+        background-color: #fff;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;   
+         
+        //overflow-y: auto;   
+
+       
+        .InforDetailDeviceTitle{
+            height: 70px;                                  
+            width: 100%;
+            background-color: #ee4f11;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .InforDetailDeviceTitleItem{  
+              text-align: center;
+              color: #fff;                        
+              font-size: 30px;
+              font-weight: 600;          
+            }
+
+
+            @media (max-width: 768px) { 
+              background-color: rgb(9, 132, 227);
+              height: 10%;    
+              width: 50%;   
+              position: fixed;                
+              top: 0px;       
+              right: 25%;    
+              z-index: 3000;       
+              display: flex;
+              justify-content: center;
+              align-items: center;   
+              .InforDetailDeviceTitleItem{           
+                  text-align: center;
+                  color: #000000;
+                  font-size: 23px;
+                  font-weight: 600;                                      
+              }
+            }
+        }
+
+        .Wrapimage{
+          margin-top: 20px;
+          width: 200px;
+          height: 200px;
+          display: flex;   
+          justify-content: center;
+          align-items: center;
+          position: relative;   
+          .image-containerDevice {  
+            width: 300px;  /* Chiều rộng cố định */
+            height: 200px; /* Chiều cao cố định */
+            overflow: hidden; /* Tránh bị tràn nội dung */
+            display: flex;
+            align-items: center; /* Canh giữa ảnh theo chiều dọc */
+            justify-content: center; /* Canh giữa ảnh theo chiều ngang */
+            background-color: #f0f0f0; /* Màu nền để dễ nhìn */
+            border: 2px solid #000000;
+            position: relative;
+            .uploaded-imageDevice {
+              width: 100%; /* Chiều ngang đầy đủ theo div */
+              height: auto; /* Giữ tỷ lệ ảnh, không bị méo */
+            }
+           
+        }
+        .buttonUpload{
+          z-index: 1000;
+          position: absolute;
+          bottom: 0;
+          right: 0;             
+          &:hover{
+              cursor: pointer;
+          }
+
+          .buttonUploadDevice{
+            z-index: 1000;
+            position: absolute;
+            bottom: -5px;
+            right: -40px;           
+            
+            &:hover{
+                cursor: pointer;
+            }
+        
+            .IconButtonUploadDevice{
+                    font-size: 40px;
+                    z-index: 1000;
+                    color: #000000;
+                   
+            }
+          }
+        }
+        }
+        
+        .wrapinformationDevice{     
+            margin-top: 20px;
+            height: 300px;  
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .informationDeviceItem{   
+                width: 60%;
+                height: 50px;
+                background-color: #fff;             
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 0.3px solid #939393;
+
+
+                .informationDeviceItemFirst{
+                   
+                   height: 100%;
+                   width: 60%;
+                   display: flex;
+                   font-weight: 600;
+                   align-items: center;
+                   column-gap: 20px;
+                   .informationDeviceItemIcon{
+                    font-size: 30px;
+                   }
+                   .informationDeviceItemFirstTitle{
+                            font-size: 20px;   
+                   }
+
+                }
+                .informationDeviceItemSecond{
+                    width: 40%;
+                    
+                    height: 100%;  
+                    display: flex;
+                    align-items: center;
+                    
+                    gap: 10px; /* Khoảng cách giữa hai nút */
+                    .informationDeviceItemSecondText{
+                        font-size: 17px;
+                        color: #6c6c6c;
+                    }
+                    .btnAlarm{
+                      flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                      min-width: 60px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                      padding: 5px 5px;
+                      font-size: 13px;
+                      text-align: center;
+                      border: none;
+                      border-radius: 5px;
+                      cursor: pointer;
+                      white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                      background-color: green;
+                      color: white;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      .iconConfirm{
+                          font-size: 20px;
+                          font-weight: 400;
+                          color: #fff;
+                      }
+                    }
+
+                    .btn-off, .btn-on {
+                        flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                        min-width: 120px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                        padding: 5px 15px;
+                        font-size: 13px;
+                        text-align: center;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                      }
+                      
+                      .btn-off {
+                        background-color: red;
+                        color: white;
+                      }
+                      
+                      .btn-on {
+                        background-color: green;
+                        color: white;
+                      }
+
+                   
+
+                      .alarmTimeInput {
+                        padding: 5px;
+                        font-size: 16px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        outline: none;
+                        cursor: pointer;
+                      }
+                    
+                }
+
+
+
+                @media (max-width: 768px) {
+                  width: 95%;
+                  .informationDeviceItemFirst{
+                      
+                      height: 100%;
+                      width: 50%;
+                      display: flex;
+                      font-weight: 450;
+                      align-items: center;
+                      column-gap: 10px;
+                      .informationDeviceItemIcon{
+                              font-size: 17px;
+                      }
+                      .informationDeviceItemFirstTitle{
+                               font-size: 15px;   
+                               color: #000000;
+                      }
+ 
+                 }
+                 .informationDeviceItemSecond{
+                     
+                      width: 52%;
+                     height: 100%;  
+                     display: flex;
+                     align-items: center;
+                     gap: 10px; /* Khoảng cách giữa hai nút */
+                     .informationDeviceItemSecondText{
+                         font-size: 16px;
+                         color: #6c6c6c;
+                     }
+                     .btnAlarm{
+                       flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                       min-width: 20px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                       padding: 5px 5px;
+                       font-size: 10px;
+                       text-align: center;
+                       border: none;
+                       border-radius: 5px;
+                       cursor: pointer;
+                       white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                       background-color: green;
+                       color: white;
+                     }
+ 
+                     .btn-off, .btn-on {
+                         flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                         min-width: 20px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                         padding: 5px 5px;
+                         font-size: 10px;
+                         text-align: center;
+                         border: none;
+                         border-radius: 5px;
+                         cursor: pointer;
+                         white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                       }
+                       
+                       .btn-off {
+                         background-color: red;
+                         color: white;
+                       }
+                       
+                       .btn-on {
+                         background-color: green;
+                         color: white;
+                       }
+                       .alarmTimeInput {
+                         padding: 5px;
+                         font-size: 16px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         outline: none;
+                         cursor: pointer;
+                       }
+                     
+                 }
+
+
+
+                }
+            
+            }
+        }
+
+
+
+        .divBattery{
+          
+          height: 600px;
+          width: 100%;
+          margin-top: 10px;
+          margin-bottom: 30px;  
+          .filterBattery{        
+            background-color: rgb(216, 216, 216);                 
+            width: 100%;  
+            height: 50px;    
+            display: flex;
+            justify-content: center;
+            align-items: center;   
+
+            // overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+
+            .divTime{
+              display: flex;
+              width: 80%;
+              .filterItemBattery{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;     
+              }
+            }
+                
+
+            .filterItemButtonBattery{
+                width: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;  
+            }
+
+            @media (max-width: 768px) { 
+
+              display: flex;
+              width: 100%; 
+              height: 15%;  
+              border-radius: 0px;
+              background-color: rgb(216, 216, 216);   
+              margin-bottom: 20px; 
+              
+             
+
+              .divTime{
+                
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                column-gap: 20px;
+                width: 75%;
+                .filterItemBattery{
+                  
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                   
+                }
+              }
+
+              .filterItemButtonBattery{
+                  // z-index: 2998;  
+                  width: 25%;
+                  button{
+                      width: 100%;
+                      height: 100%;
+                      text-align: center;
+                      font-size: 15px;
+                  }
+
+              }
+
+
+            }
+          }
+
+
+        }
+
+
+        @media (max-width: 768px) {
+            width: 95%;
+            margin-top: 0px;
+        }
+    }
+}

@@ -1,0 +1,204 @@
+
+.HistoryDevices{
+    width: 100%;
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapHistoryDevices{
+            width: 90%;
+            height: 90%;    
+            display: flex;
+            flex-direction: column;
+            column-gap: 30px;  
+
+            .HistoryDevicesDeviceTitleMobile{  
+                display: none;
+                @media (max-width: 768px) {
+                    height: 10%;    
+                    width: 92%;      
+                    position: fixed;             
+                    top: 0px;       
+                    right: 0px;    
+                    z-index: 3000;       
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;   
+                    .HistoryDevicesDeviceTitleItem{           
+                        text-align: center;
+                        color: #000000;
+                        font-size: 25px;
+                        font-weight: 600;                                      
+                    }
+                }
+
+
+               
+            }
+
+
+            .filterHistoryDevice{  
+                    
+                background-color: rgb(255, 255, 255);                 
+                width: 100%;  
+                height: 50px;    
+                display: flex;
+                justify-content: center;
+                align-items: center;   
+                z-index: 2999;
+                // overflow: hidden;
+                border-radius: 15px;
+                margin-bottom: 20px;
+                box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+    
+                .divTimeHistoryDevice{
+                  display: flex;
+                  width: 80%;
+                  .filterItemHistoryDevice{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;     
+                  }
+                }
+                    
+    
+                .filterItemButtonHistoryDevice{
+                    width: 20%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;  
+                }
+    
+                @media (max-width: 768px) { 
+    
+                    display: flex;
+                    width: 100%; 
+                    height: 15%;  
+                    border-radius: 10px;
+                    background-color: rgb(255, 255, 255);   
+                    margin-bottom: 10px;
+                    margin-top: 0px; 
+                 
+    
+                    .divTimeHistoryDevice{
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        align-items: center;
+                        column-gap: 25px;
+                        width: 85%;  
+                        
+                        .filterItemHistoryDevice{
+                            padding-right: 5%;
+                            width: 90%;          
+                            display: flex;
+                            align-items: center;
+                            column-gap: 1%;  
+                            
+                            
+                        }
+                    }
+    
+                  
+                  
+                    .filterItemButtonHistoryDevice{
+                      // z-index: 2998;  
+                      width: 25%;
+                      
+                      button{
+                          width: 90%;
+                          height: 100%;
+                          text-align: center;
+                          font-size: 15px;
+                      }
+                    }
+                }
+            }
+
+
+            .mapStolenLineDevice{  
+                height: 85%;   
+                width: 100%;   
+                overflow: hidden;
+                border-radius: 15px;
+                
+                position: relative;  
+                .HistoryDevicesDeviceTitle{  
+                    
+                   
+                    height: 8%;
+                    width: 100%;
+                    background-color: #ee4f11;  
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .HistoryDevicesDeviceTitleItem{        
+                      text-align: center;
+                      color: #fff;
+                      font-size: 30px;
+                      font-weight: 600;          
+                    }
+
+                    @media (max-width: 600px) {
+                        display: none;  
+                    }
+        
+                }
+
+
+                .loadingContainer {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 200px;
+                  }
+                  
+                  .spinner {
+                    width: 40px;
+                    height: 40px;
+                    border: 4px solid rgba(0, 0, 0, 0.2);
+                    border-top-color: #3498db;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                  }
+                  
+                  @keyframes spin {
+                    to { transform: rotate(360deg); }
+                  }
+
+                .leaflet-container {
+                    height: 100%;  
+                    width: 100%;        
+                }
+
+                @media (max-width: 768px) {
+                  
+                    height: 85%;
+                  
+    
+                }
+            }
+
+            @media (max-width: 768px) {
+                width: 100%;
+                height: 100%;
+                margin-top: 20px;
+                column-gap: 0px;      
+            }
+    }  
+   
+   
+
+    @media (max-width: 768px) {  
+        margin-top: 0px;
+        width: 100%;   
+        height: 100%; 
+        
+
+    }
+   
+}

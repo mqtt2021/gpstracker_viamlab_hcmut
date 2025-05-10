@@ -1,0 +1,58 @@
+.SettingFirst{
+  height: 35%;
+  width: 100%;     
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  .Wrapimage{
+    width: 200px;
+    height: 200px;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    position: relative;   
+    .image-container {  
+      width:  200px;
+      height: 200px;
+      
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background-color: #f4f4f4;
+      position: relative;
+
+      img {
+        position: absolute;
+        cursor: grab;
+        &:active{
+          cursor: grabbing;  
+        }
+      }
+     
+  }
+  .buttonUpload{
+    z-index: 1000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    &:hover{
+        cursor: pointer;
+    }
+
+    .IconButtonUpload{
+            font-size: 40px;
+           
+           
+    }
+  }
+  }
+  
+ 
+
+   
+
+}

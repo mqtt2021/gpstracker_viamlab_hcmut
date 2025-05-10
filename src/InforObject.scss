@@ -1,0 +1,120 @@
+.fatherInforObject{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .wrapperInforObject{          
+        width: 80%;
+        height: 95%;
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        .InforObjectTitle{
+            height: 8%;
+            width: 100%;
+            background-color: #ee4f11;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .InforObjectTitleItem{  
+              text-align: center;
+              color: #fff;
+              font-size: 30px;
+              font-weight: 600;          
+            }
+
+        }
+        .imgObject{
+            height: 30%;
+            margin-top: 10px;
+            img{
+                height: 100%;
+            }
+        }
+        
+        .wrapinformationDevice{
+            margin-top: 20px;
+            height: 60%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .informationDeviceItem{   
+                width: 40%;
+                height: 15%;
+                background-color: #fff;             
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 0.3px solid #939393;
+                .informationDeviceItemFirst{
+                   
+                   height: 100%;
+                   width: 60%;
+                   display: flex;
+                   font-weight: 600;
+                   align-items: center;
+                   column-gap: 20px;
+                   .informationDeviceItemIcon{
+                    font-size: 30px;
+                   }
+                   .informationDeviceItemFirstTitle{
+                            font-size: 20px;   
+                   }
+
+                }
+                .informationDeviceItemSecond{
+                    width: 40%;
+                    
+                    height: 100%;  
+                    display: flex;
+                    align-items: center;
+                    .informationDeviceItemSecondText{
+                        font-size: 17px;
+                        color: #6c6c6c;
+                    }
+                    
+                }
+            
+            }
+
+            a{
+                width: 30%;
+                height: 10%;
+                text-decoration: none;
+                color: #fff;
+                .divButtonEdit{
+                margin-top: 20px;
+                width: 100%;
+                height: 100%;
+                background-color: #ee4f11;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 600;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                &:hover{
+                    background-color: #ef794a;
+                    cursor: pointer;
+                }
+            }
+            }
+            
+           
+        
+
+        }
+        
+        
+
+        
+
+    }
+}

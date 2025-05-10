@@ -1,0 +1,17 @@
+.routes{
+    position: absolute;
+    top: 0;   
+    right: 0;            
+    width: 85vw; 
+    height: 100vh; 
+    background-color: #f0f2f5;
+    @media (max-width: 768px) {
+        // position: fixed;          
+        // position: static;
+        margin-top: 10vh;     
+        height:90vh;            
+        width: 100%;  
+        // overflow: auto;      
+        
+    }   
+}     

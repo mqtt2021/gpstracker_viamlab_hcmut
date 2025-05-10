@@ -1,0 +1,260 @@
+.fatherSetting{
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .wrapperSetting{
+        width: 90%;
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        overflow: hidden;
+        border-radius: 15px;
+        .SettingTitle{
+            height: 8%;
+            width: 100%;
+            background-color: #ee4f11;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .SettingTitleItem{
+              text-align: center;
+              color: #fff;
+              font-size: 30px;
+              font-weight: 600;          
+            }
+            @media (max-width: 768px) {                   
+              height: 10%;    
+              width: 92%;   
+              position: fixed;             
+              top: 0px;       
+              right: 0px; 
+              background-color: transparent;  
+              z-index: 5000;       
+              display: flex;   
+              justify-content: center;
+              align-items: center;   
+              .SettingTitleItem{                 
+                text-align: center;
+                color: #000000;
+                font-size: 25px;
+                font-weight: 600;                                       
+              }
+          
+            }
+        }
+        .SettingFirst{
+            height: 35%;
+            width: 100%;     
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            .Wrapimage{
+              width: 200px;
+              height: 200px;
+              display: flex;   
+              justify-content: center;
+              align-items: center;
+              position: relative;   
+              .image-containerDevice {  
+                width: 300px;  /* Chiều rộng cố định */
+                height: 200px; /* Chiều cao cố định */
+                overflow: hidden; /* Tránh bị tràn nội dung */
+                display: flex;
+                align-items: center; /* Canh giữa ảnh theo chiều dọc */
+                justify-content: center; /* Canh giữa ảnh theo chiều ngang */
+                background-color: #f0f0f0; /* Màu nền để dễ nhìn */
+                border: 2px solid #000000;
+                position: relative;
+                .uploaded-imageDevice {
+                  width: 100%; /* Chiều ngang đầy đủ theo div */
+                  height: auto; /* Giữ tỷ lệ ảnh, không bị méo */
+                }
+               
+            }
+            .buttonUpload{
+              z-index: 1000;
+              position: absolute;
+              bottom: 0;
+              right: 0;             
+              &:hover{
+                  cursor: pointer;
+              }
+
+              .buttonUploadDevice{
+                z-index: 1000;
+                position: absolute;
+                bottom: -5px;
+                right: -40px;           
+                
+                &:hover{
+                    cursor: pointer;
+                }
+            
+                .IconButtonUploadDevice{
+                        font-size: 40px;
+                        z-index: 1000;
+                        color: #000000;
+                       
+                }
+              }
+            }
+            }
+
+              .divChangeNameDevice{     
+                margin-top: 10px;   
+                width: 25%;  
+                position: relative;
+                .iconPen{
+                  position: absolute;
+                  right: -35px;    
+                  top: 7px;
+                  font-size: 25px;
+                  &:hover{
+                    cursor: pointer;
+                  }
+                }
+
+                @media (max-width: 768px) {   
+                  width: 45%;
+  
+                }
+                             
+              }
+
+              @media (max-width: 768px) {                
+                height: 42%;   
+
+              }
+
+        }
+
+
+        .Settingline{
+          width: 100%;
+          height: 0.4%;
+          background-color: #8d8d8d;
+        }
+
+        .SettingSecond{
+          margin-top: 20px;
+          width: 100%;
+          height: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center; 
+          
+          .divSettingSecond{
+            width: 50%;  
+            height: 20%;
+            margin-bottom: 15px;
+            
+            a{
+              text-decoration: none;
+              color: black;
+              width: 100%;
+              height: 100%;     
+             
+              display: flex;
+              justify-content: center;
+                  .SettingSecondItem{
+                  width: 100%;        
+                  padding-left: 30px;               
+                  height: 100%;   
+                  margin-bottom: 20px;
+                  background-color: #f9f7f7;  
+                  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+                  display: flex;
+                  align-items: center;
+                  border-radius: 10px;
+                  font-size: 30px;
+                  column-gap: 10px;
+                  font-weight: 450;
+                  &:hover{
+                      cursor: pointer;
+                      background-color: #ffffff; 
+                  }
+                  .InforIcon{
+                     color: #007bff;
+                  }
+                  .SimIcon{
+                     color: #24edbb;
+                  }
+                  .WarningIcon{
+                     color: #ee4f11;
+                  }
+                  .TrackingIcon{
+                      color: yellow;
+                  }
+                 
+              }
+  
+  
+            }
+
+            @media (max-width: 768px) {   
+                width: 95%;
+
+            }
+
+          }
+
+          
+          .DeleteDevice{
+                width: 50%;
+                padding-left: 30px;               
+                height: 20%;   
+                margin-bottom: 20px;
+                background-color: #f9f7f7;     
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+                display: flex;
+                align-items: center;
+                border-radius: 10px;
+                font-size: 30px;
+                column-gap: 10px;
+                font-weight: 450;
+                &:hover{
+                    cursor: pointer;
+                    background-color: #ffffff; 
+                }
+                .InforIcon{
+                   color: #007bff;
+                }
+                .SimIcon{
+                   color: #24edbb;
+                }
+                .WarningIcon{
+                   color: #ee4f11;
+                }
+                .TrackingIcon{
+                    color: yellow;
+                }
+
+                @media (max-width: 768px) {   
+                  width: 95%;
+  
+                }
+          }
+        
+                
+            
+            
+
+        }
+
+
+        @media (max-width: 768px) {
+          width: 100%;
+          border-radius: 0px;
+          height: 100%;
+        }
+    }
+
+    
+}

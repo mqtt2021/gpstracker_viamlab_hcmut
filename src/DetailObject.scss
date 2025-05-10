@@ -1,0 +1,365 @@
+.fatherInforDetailObject{
+    width: 100%;
+    height: 100%;    
+    display: flex;                                 
+    justify-content: center;                    
+    align-items: center;
+    overflow: auto;
+
+
+
+    .loadingContainer {
+      display: flex;   
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .wrapperInforDetailObject{                                         
+        width: 80%;   
+        height: 100%;
+        
+        //overflow: hidden;
+        display: flex;
+        flex-direction: column;    
+        align-items: center;             
+        // align-items: stretch; /* Giãn hết chiều cao */
+        background-color: #fff;
+        margin-top: 50px;
+         
+        //overflow-y: auto;   
+
+       
+        .InforDetailObjectTitle{
+            height: 70px;                                  
+            width: 100%;
+            background-color: #ee4f11;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .InforDetailObjectTitleItem{  
+              width: 100%;
+              text-align: center;
+              color: #fff;                        
+              font-size: 30px;
+              font-weight: 600;          
+            }
+
+
+            @media (max-width: 768px) { 
+
+              background-color: rgb(9, 132, 227);
+              
+              height: 10%;    
+              width: 50%;   
+              position: fixed;                
+              top: 0px;       
+              right: 25%;    
+              z-index: 3000;       
+              display: flex;
+              justify-content: center;
+              align-items: center;   
+              .InforDetailObjectTitleItem{           
+                  text-align: center;
+                  color: #000000;
+                  font-size: 20px;
+                  font-weight: 600;                                      
+              }
+           
+            }
+
+        }
+
+        .imgObject{
+          margin-top: 20px;
+          width: 200px;
+          height: 200px;
+          display: flex;   
+          justify-content: center;
+          align-items: center;
+          position: relative;  
+            
+
+            .image-containerDetailObject {  
+              width: 300px;  /* Chiều rộng cố định */
+              height: 200px; /* Chiều cao cố định */
+              overflow: hidden; /* Tránh bị tràn nội dung */
+              display: flex;
+              align-items: center; /* Canh giữa ảnh theo chiều dọc */
+              justify-content: center; /* Canh giữa ảnh theo chiều ngang */
+              background-color: #f0f0f0; /* Màu nền để dễ nhìn */
+              border: 2px solid #000000;
+              position: relative;
+              .uploaded-imageDevice {
+                width: 100%; /* Chiều ngang đầy đủ theo div */
+                height: auto; /* Giữ tỷ lệ ảnh, không bị méo */
+              }
+             
+          }
+          .buttonUploadDetailObject{
+            z-index: 1000;
+            position: absolute;
+            bottom: 0;
+            right: 0;             
+            &:hover{
+                cursor: pointer;
+            }
+          
+            .IconButtonUploadDetailObject{
+                      font-size: 40px;
+                      z-index: 1000;
+                      color: #000000;
+                     
+            }
+            
+          }
+        }
+        
+        .wrapinformationObject{     
+            margin-top: 20px;
+            height: 300px;  
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            .informationObjectItemButton{
+              margin-top: 20px; 
+              height: 20%;
+              width: 20%;
+              background-color: #ee4f11;
+              text-align: center;
+              border-radius: 15px;
+              font-size: 18px;
+              font-weight: 500;
+              color: #000000;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;  
+
+              &:hover{
+                background-color: #e3835c;
+              }
+
+              .butonDeleteObject{
+
+              }
+
+              @media (max-width: 768px) {
+                height: 20%;
+                width: 40%;
+              }
+
+            }
+
+            .informationObjectItem{   
+                width: 60%;
+                height: 50px;
+                background-color: #fff;             
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 0.3px solid #939393;
+
+                
+
+
+                .informationObjectItemFirst{
+                   
+                   height: 100%;
+                   width: 57%;
+                   display: flex;
+                   font-weight: 600;
+                   align-items: center;
+                   column-gap: 20px;
+                   .informationObjectItemIcon{
+                    font-size: 30px;
+                   }
+                   .informationObjectItemFirstTitle{
+                            font-size: 20px;   
+                   }
+
+                }
+                .informationObjectItemSecond{
+                    width: 43%;
+                    
+                    height: 100%;  
+                    display: flex;
+                    align-items: center;
+                    
+                    gap: 10px; /* Khoảng cách giữa hai nút */
+                    .informationObjectItemSecondText{
+                        font-size: 17px;
+                        color: #6c6c6c;
+                    }
+                    .btnAlarm{
+                      flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                      min-width: 60px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                      padding: 5px 5px;
+                      font-size: 13px;
+                      text-align: center;
+                      border: none;
+                      border-radius: 5px;
+                      cursor: pointer;
+                      white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                      background-color: green;
+                      color: white;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      .iconConfirm{
+                          font-size: 20px;
+                          font-weight: 400;
+                          color: #fff;
+                      }
+                    }
+
+                    .btn-off, .btn-on {
+                        flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                        min-width: 120px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                        padding: 5px 15px;
+                        font-size: 13px;
+                        text-align: center;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                      }
+                      
+                      .btn-off {
+                        background-color: red;
+                        color: white;
+                      }
+                      
+                      .btn-on {
+                        background-color: green;
+                        color: white;
+                      }
+
+                   
+
+                      .alarmTimeInput {
+                        padding: 5px;
+                        font-size: 16px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        outline: none;
+                        cursor: pointer;
+                      }
+                    
+                }
+
+
+
+                @media (max-width: 768px) {
+        
+                  width: 80%;
+                  
+
+                  .informationObjectItemFirst{
+                    
+                    height: 100%;
+                    width: 55%;
+                    display: flex;
+                    font-weight: 400;
+                    align-items: center;
+                    column-gap: 10px;
+                    .informationObjectItemIcon{
+                     font-size: 17px;
+                    }
+                    .informationObjectItemFirstTitle{
+                             font-size: 17px;   
+                    }
+ 
+                 }
+                 .informationObjectItemSecond{
+                     
+                     width: 45%;
+                     height: 100%;  
+                     display: flex;
+                     align-items: center;
+                     gap: 10px; /* Khoảng cách giữa hai nút */
+                     padding-left: 10px;
+                     .informationObjectItemSecondText{
+                         font-size: 16px;
+                         color: #6c6c6c;
+                     }
+                     .btnAlarm{
+                       flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                       min-width: 20px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                       padding: 5px 5px;
+                       font-size: 13px;
+                       text-align: center;
+                       border: none;
+                       border-radius: 5px;
+                       cursor: pointer;
+                       white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                       background-color: green;
+                       color: white;
+                     }
+ 
+                     .btn-off, .btn-on {
+                         flex: 1; /* Đảm bảo cả hai nút có cùng chiều rộng */
+                         min-width: 20px; /* Đặt chiều rộng tối thiểu để không quá nhỏ */
+                         padding: 5px 5px;
+                         font-size: 10px;
+                         text-align: center;
+                         border: none;
+                         border-radius: 5px;
+                         cursor: pointer;
+                         white-space: nowrap; /* Ngăn chữ bị xuống dòng */
+                       }
+                       
+                       .btn-off {
+                         background-color: red;
+                         color: white;
+                       }
+                       
+                       .btn-on {
+                         background-color: green;
+                         color: white;
+                       }
+ 
+                    
+ 
+                       .alarmTimeInput {
+                         padding: 5px;
+                         font-size: 16px;
+                         border: 1px solid #ccc;
+                         border-radius: 5px;
+                         outline: none;
+                         cursor: pointer;
+                       }
+                     
+                 }
+
+
+
+                }
+            
+            }
+        }
+
+        @media (max-width: 768px) {
+            width: 95%;
+            margin-top: 0px;
+        }
+    }
+}

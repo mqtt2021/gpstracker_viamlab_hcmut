@@ -1,0 +1,170 @@
+.fatherEditInforObject{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .wrapperEditInforObject{              
+        width: 80%;
+        height: 95%;
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        .EditInforObjectTitle{
+            height: 8%;
+            width: 100%;
+            background-color: #ee4f11;  
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .EditInforObjectTitleItem{  
+              text-align: center;
+              color: #fff;
+              font-size: 30px;
+              font-weight: 600;          
+            }
+
+        }
+        .SettingFirst{
+            height: 35%;
+            width: 100%;     
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            .Wrapimage{
+              width: 200px;
+              height: 200px;
+              display: flex;   
+              justify-content: center;
+              align-items: center;
+              position: relative;   
+              .image-container {  
+                width:  200px;
+                height: 200px;
+                
+                border: 2px solid #ccc;
+                border-radius: 50%;
+                overflow: hidden;
+                position: relative;
+                background-color: #f4f4f4;
+                position: relative;
+
+                img {
+                  position: absolute;
+                  cursor: grab;
+                  &:active{
+                    cursor: grabbing;  
+                  }
+                }
+               
+            }
+            .buttonUpload{
+              z-index: 1000;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              
+              &:hover{
+                  cursor: pointer;
+              }
+
+              .IconButtonUpload{
+                      font-size: 40px;
+                     
+                     
+              }
+            }
+            }
+            
+              // .image-container 
+              
+              // .image-container img:active {
+                
+              // }
+
+             
+
+        }
+        .wrapInforEditObject{  
+            margin-top: 20px;
+            height: 60%;
+            width: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .wrapInforEditObjectItem{     
+                width: 40%;
+                height: 14%;
+                margin-bottom: 10px;
+                .wrapInforEditObjectItemFirst{
+                   
+                   height: 50%;
+                   width: 60%;
+                   display: flex;
+                   font-weight: 600;
+                   align-items: center;
+                   column-gap: 20px;
+                   .IconEditObject{   
+                            font-size: 30px;
+                   }
+                   .titleEditObject{  
+                            font-size: 17px;          
+                   }
+
+                }
+                .wrapInforEditObjectItemSecond{   
+                    
+                    width: 100%;
+                    height: 50%;  
+                    display: flex;
+                    align-items: center;
+                    input{
+                        width: 100%;   
+                        border: none;             /* Xóa toàn bộ viền mặc định */
+                        border-bottom: 1px solid #666666; /* Chỉ thêm viền phía dưới */
+                        outline: none;            /* Xóa viền khi focus */
+                        padding: 5px 0;           /* Khoảng cách trên dưới */
+                        font-size: 16px;          /* Kích thước chữ */
+                        width: 100%;              /* Độ rộng toàn dòng hoặc tùy chỉnh */
+                        box-sizing: border-box;   /* Bao gồm padding vào kích thước tổng */
+                    }
+                    
+                }
+            
+            }
+
+            .divButtonEdit{
+                margin-top: 20px;
+                width: 30%;
+                height: 10%;
+                background-color: #ee4f11;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 600;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                &:hover{
+                    background-color: #ef794a;
+                    cursor: pointer;
+                }
+            }
+           
+        
+
+        }
+        
+        
+
+        
+
+    }
+}

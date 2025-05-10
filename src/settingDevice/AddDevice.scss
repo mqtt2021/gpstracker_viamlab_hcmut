@@ -1,0 +1,56 @@
+.SettingFirst{
+  height: 35%;
+  width: 100%;     
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  .Wrapimage{
+    width: 200px;
+    height: 200px;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    position: relative;   
+    .image-containerDevice {  
+      width: 300px;  /* Chiều rộng cố định */
+      height: 200px; /* Chiều cao cố định */
+      overflow: hidden; /* Tránh bị tràn nội dung */
+      display: flex;
+      align-items: center; /* Canh giữa ảnh theo chiều dọc */
+      justify-content: center; /* Canh giữa ảnh theo chiều ngang */
+      background-color: #f0f0f0; /* Màu nền để dễ nhìn */
+      border: 2px solid #000000;
+      position: relative;
+      .uploaded-imageDevice {
+        width: 100%; /* Chiều ngang đầy đủ theo div */
+        height: auto; /* Giữ tỷ lệ ảnh, không bị méo */
+      }
+     
+  }
+  .buttonUploadDevice{
+    z-index: 1000;
+    position: absolute;
+    bottom: -5px;
+    right: -40px;           
+    
+    &:hover{
+        cursor: pointer;
+    }
+
+    .IconButtonUploadDevice{
+            font-size: 40px;
+            z-index: 1000;
+            color: #000000;
+           
+    }
+  }
+  
+  }
+  
+ 
+
+   
+
+}

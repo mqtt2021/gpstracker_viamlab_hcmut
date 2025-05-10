@@ -1,0 +1,160 @@
+
+.History{
+    width: 100%;
+    height: 100vh;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapHistory{
+            width: 90%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            column-gap: 30px;  
+            .MapTitle{
+                display: none;
+            }
+            .filter{
+                margin-bottom: 30px;
+                width: 100%;
+                height: 10%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                overflow: hidden;
+                border-radius: 15px;
+                background-color: #fff;
+                box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+                .filterItem{
+                    font-weight: 768;
+                    z-index: 3000;
+                    height: 50px;   
+                    display: flex;
+                    align-items: center;
+                    column-gap: 10px;  
+                }
+                .filterItemSelectLogger{
+                
+                }
+                .filterItemButton{
+                    display: flex;
+                    column-gap: 10px;
+                }
+
+            
+            }
+            .mapStolenLine{
+                height: 85%;   
+                width: 100%;   
+                overflow: hidden;
+                border-radius: 20px;
+                .leaflet-container {
+                    height: 100%;  
+                    width: 100%;        
+                }
+
+               
+
+            }
+
+           
+    }  
+   
+   
+
+    @media (max-width: 768px) {
+        
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;   
+        
+        .wrapHistory{
+            background-color: red;  
+            width: 100%;
+            height: 100%;   
+            position: relative;
+            .MapTitle{       
+                height: 10%;    
+                width: 50%;   
+                position: fixed;             
+                top: 0px;       
+                right: 25%; 
+                
+                z-index: 3000;       
+                display: flex;
+                justify-content: center;
+                align-items: center;   
+                .MapTitleItem{           
+                    text-align: center;
+                    color: #000000;
+                    font-size: 25px;
+                    font-weight: 600;                                      
+                }
+            } 
+            .filter{
+                display: flex;
+                flex-direction: column;
+                width: 100%; 
+                height: 25%;  
+                border-radius: 0px;
+                background-color: rgb(255, 255, 255);
+                margin-bottom: 0px;  
+                .filterItem{
+                    font-weight: 600;
+                    
+                    width: 100%;
+                    z-index: 2999;
+                    height: 25%;    
+                    display: flex;
+                    justify-content: space-around;                                 
+                }
+                .filterItemStart{
+                   
+                }
+                .filterItemEnd{
+                                   
+                }
+                .filterItemSelectLogger{
+                    float: 0px;   
+                   width: 50%;  
+                   font-size: 5px;  
+                   select{
+                    height: 100%;
+                   }             
+                }
+                .filterItemButton{
+                    z-index: 2998;  
+                    display: flex;
+                    justify-content: space-around;
+                    button{
+                        width: 30%;
+                        height: 100%;
+                        text-align: center;
+                    }
+                }
+            } 
+            .mapStolenLine{
+                height: 100%;        
+                width: 100%;     
+                overflow: hidden;
+                border-radius: 0px;
+                .leaflet-container {
+                    height: 100%;  
+                    width: 100%;        
+                }
+            }
+
+           
+    }  
+        
+
+        
+
+       
+
+    }
+   
+}
