@@ -309,14 +309,15 @@ function PositionDevice() {
                         />
                         <MyClickHandlerGetLocation onClick={handleMapClickGetLocation}/>   
 
-                          {isShowPositionUser && 
+                                {isShowPositionUser && 
                                   <Marker  
                                       className='maker'
                                       // position={[positionUser.latitude , positionUser.longtitude]}
                                       position={[locationUser.coordinates.latitude, locationUser.coordinates.longtitude]}
-                                      icon= { user }                             
+                                      icon= { user }                                 
                                   >
-                                  </Marker>
+                                   
+                                  </Marker>   
                                 }
 
 

@@ -13,8 +13,8 @@ function App() {
 
   const { user , loginContext, token, setToken, loginTotalLogin, logoutTotalLogin, LoginTotal, accessRouteRegister, setaccessRouteRegister, accessRouteOTP, setaccessRouteOTP } = useContext(UserContext);
   
-  const navigate = useNavigate();
-  const location = useLocation();
+  const navigate = useNavigate();   
+  const location = useLocation();     
   
   useEffect(() => {
   

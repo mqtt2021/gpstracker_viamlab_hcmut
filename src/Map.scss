@@ -51,12 +51,19 @@
               }
             }
 
-            .leaflet-container {  
+            .divMapchildren{
+
+               height: 92%;       
+               width: 100%; 
+
+    
+
+              .leaflet-container {  
               //position: fixed;
-            
-              height: 92%;     
+               
+              height: 92%;       
               width: 100%; 
-            .leaflet-popup-content{
+              .leaflet-popup-content{
                     
                   width: 100%;  
                    .div-popup{
@@ -115,6 +122,10 @@
                  }
             }
           }
+
+            }
+
+           
 
  
             @media (max-width: 768px) {

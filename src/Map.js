@@ -17,6 +17,7 @@ import {  toast } from 'react-toastify';
 import ModelConfirm from './ModelConfirm';
 import { UserContext } from './usercontext';
 import { url } from './services/UserService';
+
 function Map() {  
  
   const { center, zoomLevel, setZoomLevel,
@@ -26,12 +27,18 @@ function Map() {
           pressPercentBattery, setgetLoggerStolen, displayNav, setDisplayNav, displayRoutesTwoPoint, setDisplayRoutesTwoPoint,
           isButtonDisabled, setIsButtonDisabled , accessRouteRegister, listAllDevices, setlistAllDevices,
           inforCustomer, setInforCustomer, phoneNumberCustomer, setPhoneNumberCustomer, listObject, setlistObject    
-        } =  useContext(UserContext);           
-  //const locationUser = useGeoLocation()  // lấy vị trí của người thay pin
+        } =  useContext(UserContext);    
+        
+        
+  const locationUser = useGeoLocation()  // lấy vị trí của người thay pin
+  
+  
   const [showModalChangeName, setshowModalChangeName] = useState(false); // hiển thị bảng đổi tên
   const [ZOOM_LEVEL, setZOOM_LEVEL] = useState(9) // độ zoom map
   const [listAllLogger, setListAllLogger]= useState([]) // danh sách tất cả logger
   const mapRef = useRef()  
+
+  
   const [positionUser, setpositionUser] = useState({ latitude: "", longtitude: "" }); //vị trí của người thay pin    
   const [isShowPositionUser, setIsShowPositionUser] = useState(false); // hiển thị vị trí người thay pin
   const [listLoggerBattery,setlistLoggerBattery] = useState([]) // danh sách Logger cần thay pin
@@ -41,6 +48,12 @@ function Map() {
   const [PositionCabinet, setPositionCabinet] = useState({});  // hiển thị tủ điện
   const [isMapLoading, setIsMapLoading] = useState(true);
   const [isLoadingAPIDevices, setLoadingAPIDevices] = useState(false);
+
+  const [dataLoggerClick, setdataLoggerClick] = useState([])
+
+  const [bestPathbaterry, setbestPathbaterry] = useState([])      
+
+
   // const url = 'https://sawacoapi.azurewebsites.net'   
   
   const wakeup = new L.Icon({ // marker bình thường
@@ -223,16 +236,31 @@ useEffect(() => {
     };
 
  
+const [showPanel, setShowPanel] = useState(false);
 
 useEffect(()=>{
-  if( percentBattery > 0 ) {   
-    const  listDataLoggerBattery = listAllDevices.filter((item,index)=> item.battery <= parseInt(percentBattery) )            
-    if(listDataLoggerBattery.length > 0  ){
-      setlistLoggerBattery(listDataLoggerBattery)
-      setCenter({ lat: 10.81993366729437, lng: 106.69843395240606  })
-      setZoomLevel(9)
+  if( percentBattery > 0 ) {    
 
-      toast.success('Hiển thị các thiết bị có mức pin như yêu cầu') 
+    const  listDataLoggerBattery = listAllDevices.filter((item,index)=> item.battery <= parseInt(percentBattery) )            
+    
+    if(listDataLoggerBattery.length > 0  ){ 
+      
+    const coordinatesWithId = listDataLoggerBattery.map(device => ({
+      id: device.id,
+      lat: device.latitude,
+      lng: device.longitude
+    }));
+
+      setdataLoggerClick(coordinatesWithId)  
+
+      setlistLoggerBattery(listDataLoggerBattery)                 
+
+      //setCenter({ lat: 10.81993366729437, lng: 106.69843395240606  })  
+      setCenter({ lat: locationUser.coordinates.latitude, lng: locationUser.coordinates.longtitude  })   
+      
+      setZoomLevel(18)        
+
+      toast.success('Hiển thị các thiết bị có mức pin như yêu cầu')         
 
 
     }   
@@ -550,11 +578,329 @@ function convertDateTimeBefore(inputString) {
 }
 
 
-//console.log('deviceAddresses', deviceAddresses)
 
-  return (   
+  const calculateDistance = (point1, point2) => {
+    const latLng1 = L.latLng(point1.lat, point1.lng);
+    const latLng2 = L.latLng(point2.lat, point2.lng);
+    const distance = latLng1.distanceTo(latLng2);
+    return distance;
+  };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const GA_TSP = (locations, populationSize, generations, mutationRate) => {
+  // locations[0] luôn là điểm bắt đầu cố định
+
+  // Khởi tạo 1 cá thể (chromosome)
+  // Chỉ hoán vị phần từ 1 đến hết
+  const createRandomPath = () => {
+    const fixedStart = locations[0];
+    const rest = locations.slice(1);
+    for (let i = rest.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [rest[i], rest[j]] = [rest[j], rest[i]];
+    }
+    return [fixedStart, ...rest];   
+  };
+
+  // Khởi tạo quần thể
+  const createPopulation = () => {
+    const population = [];
+    for (let i = 0; i < populationSize; i++) {
+      population.push(createRandomPath());
+    }
+    return population;
+  };
+
+  // Tính fitness: tổng khoảng cách
+  const calculateFitness = (path) => {
+    let totalDistance = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+      totalDistance += calculateDistance(path[i], path[i + 1]);
+    }
+    return totalDistance;
+  };
+
+  const evaluatePopulation = (population) => {
+    return population.map(path => ({
+      path,
+      fitness: calculateFitness(path),
+    }));
+  };
+
+  // Chọn lọc: chọn nửa tốt nhất
+  const selection = (evaluatedPopulation) => {
+    evaluatedPopulation.sort((a, b) => a.fitness - b.fitness);
+    return evaluatedPopulation.slice(0, Math.floor(populationSize / 2));
+  };
+
+  // Lai ghép (crossover) chỉ hoán vị phần từ index 1 về sau
+  const crossover = (parent1, parent2) => {
+    const fixedStart = parent1[0];
+    const size = parent1.length;
+
+    const start = 1 + Math.floor(Math.random() * (size - 1));
+    const end = start + Math.floor(Math.random() * (size - start));
+
+    // Lấy đoạn con từ parent1 (phần từ start đến end)
+    const segment = parent1.slice(start, end);
+
+    // Xây dựng child bắt đầu với fixedStart
+    const childRest = [];
+
+    // Thêm các điểm từ parent2 nếu chưa có trong segment
+    parent2.slice(1).forEach(city => {
+      if (!segment.includes(city)) {
+        childRest.push(city);
+      }
+    });
+
+    // Ghép đoạn segment vào vị trí ngẫu nhiên trong childRest
+    // Cách đơn giản: chèn segment vào đầu childRest
+    const child = [fixedStart, ...segment, ...childRest];
+
+    return child;
+  };
+
+  // Đột biến (mutation) chỉ trong phần từ 1 trở đi
+  const mutate = (path) => {
+    if (Math.random() < mutationRate) {
+      const indexA = 1 + Math.floor(Math.random() * (path.length - 1));
+      const indexB = 1 + Math.floor(Math.random() * (path.length - 1));
+      [path[indexA], path[indexB]] = [path[indexB], path[indexA]];
+    }
+    return path;
+  };
+
+  // Áp dụng mutation cho toàn bộ quần thể
+  const applyMutation = (population) => population.map(individual => mutate(individual));
+
+  // Main loop
+  let population = createPopulation();
+
+  for (let gen = 0; gen < generations; gen++) {
+    const evaluated = evaluatePopulation(population);
+    const selected = selection(evaluated);
+    population = [];
+
+    // Sinh ra quần thể mới bằng crossover các cá thể trong selected
+    while (population.length < populationSize) {
+      const parent1 = selected[Math.floor(Math.random() * selected.length)].path;
+      const parent2 = selected[Math.floor(Math.random() * selected.length)].path;
+      population.push(crossover(parent1, parent2));
+    }
+
+    // Đột biến
+    population = applyMutation(population);
+  }
+
+  // Lấy cá thể tốt nhất
+  const finalEvaluated = evaluatePopulation(population);
+  finalEvaluated.sort((a, b) => a.fitness - b.fitness);
+  return finalEvaluated[0].path;
+};
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//   const GA_TSP = (locations, populationSize, generations, mutationRate) => {
+//   const startPoint = locations[0]; // vị trí người dùng
+//   const otherPoints = locations.slice(1); // các điểm còn lại
+
+//   const createRandomPath = () => {
+//     let path = [...otherPoints];
+//     for (let i = path.length - 1; i > 0; i--) {
+//       const randomIndex = Math.floor(Math.random() * (i + 1));
+//       [path[i], path[randomIndex]] = [path[randomIndex], path[i]];
+//     }
+//     return [startPoint, ...path];
+//   };
+
+//   const createPopulation = () => {
+//     let population = [];
+//     for (let i = 0; i < populationSize; i++) {
+//       population.push(createRandomPath());
+//     }
+//     return population;
+//   };
+
+//   const calculateFitness = (path) => {
+//     let totalDistance = 0;
+//     for (let i = 0; i < path.length - 1; i++) {
+//       totalDistance += calculateDistance(path[i], path[i + 1]);
+//     }
+//     return totalDistance;
+//   };
+
+//   const evaluatePopulation = (population) => {
+//     return population.map((path) => ({
+//       path,
+//       fitness: calculateFitness(path),
+//     }));
+//   };
+
+//   const selection = (evaluatedPopulation) => {
+//     evaluatedPopulation.sort((a, b) => a.fitness - b.fitness);
+//     return evaluatedPopulation.slice(0, populationSize / 2);
+//   };
+
+//   const crossover = (parent1, parent2) => {
+//     const p1 = parent1.slice(1);
+//     const p2 = parent2.slice(1);
+
+//     const start = Math.floor(Math.random() * p1.length);
+//     const end = start + Math.floor(Math.random() * (p1.length - start));
+//     const childMid = p1.slice(start, end);
+
+//     const child = [...childMid];
+//     p2.forEach((point) => {
+//       if (!child.some(p => p.id === point.id)) {
+//         child.push(point);
+//       }
+//     });
+
+//     return [startPoint, ...child];
+//   };
+
+//   const generateNewPopulation = (selectedPopulation) => {
+//     const newPopulation = [];
+//     for (let i = 0; i < populationSize; i++) {
+//       const parent1 = selectedPopulation[Math.floor(Math.random() * selectedPopulation.length)].path;
+//       const parent2 = selectedPopulation[Math.floor(Math.random() * selectedPopulation.length)].path;
+//       newPopulation.push(crossover(parent1, parent2));
+//     }
+//     return newPopulation;
+//   };
+
+//   const mutate = (path) => {
+//     if (Math.random() < mutationRate) {
+//       const indexA = Math.floor(Math.random() * (path.length - 1)) + 1;
+//       const indexB = Math.floor(Math.random() * (path.length - 1)) + 1;
+//       [path[indexA], path[indexB]] = [path[indexB], path[indexA]];
+//     }
+//     return path;
+//   };
+
+//   const applyMutation = (population) => {
+//     return population.map((individual) => mutate(individual));
+//   };
+
+//   let population = createPopulation();
+
+//   for (let gen = 0; gen < generations; gen++) {
+//     const evaluatedPopulation = evaluatePopulation(population);
+//     const selectedPopulation = selection(evaluatedPopulation);
+//     population = generateNewPopulation(selectedPopulation);
+//     population = applyMutation(population);
+//   }
+
+//   const finalEvaluatedPopulation = evaluatePopulation(population);
+//   finalEvaluatedPopulation.sort((a, b) => a.fitness - b.fitness);
+//   return finalEvaluatedPopulation[0].path;
+// };
+                                      
+// Sử dụng hàm GA_TSP trong ứng dụng của bạn 
+
+const nearestNeighborTSP = (locations) => {
+  if (locations.length === 0) return [];
+
+  const visited = [];
+  const unvisited = [...locations];
+  
+  // Bắt đầu từ vị trí đầu tiên (ví dụ là vị trí người dùng)
+  let current = unvisited.shift();
+  visited.push(current);
+
+  while (unvisited.length > 0) {
+    let nearestIndex = 0;
+    let nearestDistance = calculateDistance(current, unvisited[0]);
+
+    for (let i = 1; i < unvisited.length; i++) {
+      const dist = calculateDistance(current, unvisited[i]);
+      if (dist < nearestDistance) {
+        nearestDistance = dist;
+        nearestIndex = i;
+      }
+    }
+
+    current = unvisited.splice(nearestIndex, 1)[0];
+    visited.push(current);
+  }
+
+  return visited;
+};
+
+
+
+  const handleDisplayRouteGA = async (data) => {              
+    RemoveRoute();                 
+    try {         
+      //const bestPath = GA_TSP(data, 100, 500, 0.01); // Khởi tạo GA với quần thể 100, 500 thế hệ, tỷ lệ đột biến 1%
+      const bestPath = nearestNeighborTSP(data); // Khởi tạo GA với quần thể 100, 500 thế hệ, tỷ lệ đột biến 1%
+            
+      setbestPathbaterry(bestPath)        
+      
+      
+      const listLocationFull = bestPath.map((bin) => L.latLng(bin.lat, bin.lng));   
+  
+      const routing = L.Routing.control({
+        waypoints: [...listLocationFull],
+        lineOptions: {
+          styles: [
+            {
+              color: "blue",   
+              opacity: 0.6,
+              weight: 8,
+            },
+          ],
+        },
+        routeWhileDragging: true,
+        addWaypoints: false,
+        draggableWaypoints: false,
+        fitSelectedRoutes: false,
+        showAlternatives: false,
+        createMarker: function () {
+          return null;
+        },
+      });
+      currentRoutingRef.current = routing;
+      routing.addTo(mapRef.current);
+
+   
+           
+    } catch (error) {    
+      console.error("Error displaying route:", error);
+    }
+  };
+
+
+  useEffect(()=>{
+    
+    if(dataLoggerClick.length > 0){              
+      handleDisplayRouteGA([{id: "User" , lat: locationUser.coordinates.latitude , lng: locationUser.coordinates.longtitude }, ...dataLoggerClick])
+    }  
+
+  },[dataLoggerClick])   
+
+  useEffect(()=>{
+    
+    if(bestPathbaterry.length > 0){                                
+        setShowPanel(true)                      
+    }
+
+  },[bestPathbaterry])
+  
+
+  const handleClick = (device) => {   
+    setCenter({ lat: device.lat, lng: device.lng  })           
+    
+  };
+
+
+console.log('bestPathbaterry', bestPathbaterry)   
+     
+  return (           
     <>
- <div className='Map'>
+ <div className='Map'>  
                   <div className='divMap'>  
                     <div className='MapTitle'>
                        <div className='MapTitleItem'>
@@ -569,10 +915,14 @@ function convertDateTimeBefore(inputString) {
                     </div>
                     ) : (
 
-                <MapContainer 
+
+                      <div className='divMapchildren'>  
+                     
+
+                        <MapContainer    
                           center={center} 
                           zoom={ZOOM_LEVEL}     
-                          ref={mapRef}>
+                          ref={mapRef}>  
 
                          {/* Div hiển thị trên bản đồ */}
                           <div 
@@ -831,6 +1181,61 @@ function convertDateTimeBefore(inputString) {
                                   
                                                                                   
                     </MapContainer>
+
+                     {showPanel &&
+                     
+                     <div
+      style={{
+        position: "absolute",
+        top: 60,  
+        right: 10,
+        width: 250,
+        maxHeight: "80vh",
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
+        boxShadow: "-2px 0 8px rgba(0,0,0,0.15)",
+        padding: 16,
+        overflowY: "auto",
+        zIndex: 1000,
+        borderRadius: 8,
+      }}
+    >
+      <h6 style={{ marginTop: 0 }}>Thứ tự đi thay pin đề xuất</h6>     
+      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {bestPathbaterry.map((device) => (      
+          <li
+            key={device.id}
+            onClick={() => handleClick(device)}
+            style={{
+              cursor: "pointer",     
+              padding: "8px 0",
+              borderBottom: "1px solid #ddd",
+              userSelect: "none",
+            }}
+          >
+            {device.id}
+          </li>
+        ))}
+      </ul>
+    </div>
+                        }
+
+                    
+
+    </div>
+
+
+
+
+
+                     
+
+                     
+
+                
+
+                   
+
+                    
 
               )}
 

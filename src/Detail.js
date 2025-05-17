@@ -24,7 +24,7 @@ import { GiNightSleep } from "react-icons/gi";
 import { MdCancel } from "react-icons/md";
 
 
-function Detail() {    
+function Detail() {      
     const [image, setImage] = useState(null);
     const [isPressed, setIsPressed] = useState(false);
     const [isPressedBtnThreshold, setisPressedBtnThreshold] = useState(false);
@@ -120,22 +120,23 @@ function Detail() {
       
     }, [Device]) 
 
-    const getAllObject = async () => {   
+    const getAllObject = async () => {     
       let success = false;
-      while (!success) {
-        try {
-          const response = await axios.get(`${url}/GPSObject/GetObjectByPhoneNumber?phoneNumber=${phone}`);    
-          const DevicesData = response.data; 
-          ////console.log(DevicesData)   
+      while (!success) {   
+        try {     
+          const response = await axios.get(`${url}/GPSObject/GetObjectByPhoneNumber?phoneNumber=${phone}`);          
+          const DevicesData = response.data;   
+          console.log(DevicesData)      
           // Kiểm tra nếu dữ liệu nhận được hợp lệ
-          if (DevicesData && DevicesData.length > 0) {      
+          if (DevicesData && DevicesData.length > 0) {        
             const Devices = DevicesData.find((item) => item.connected === true && item.gpsDeviceId === idDevice);
 
             if (Devices) {
               ////console.log("Tìm thấy thiết bị:", Devices);
-            } else {
+            } else {   
               const ConfirmdeleteDevice = window.confirm("Chú ý, bạn chưa tạo đối tượng kết nối với thiết bị theo dõi!!!");
-              if (ConfirmdeleteDevice) {
+              console.log("ccccccccccccccccccccccccc");
+              if (ConfirmdeleteDevice) {   
                
                
               } else {
@@ -145,7 +146,15 @@ function Detail() {
 
             setObjectIsConnect(Devices);         
             success = true; 
-          } else {
+          } else {  
+              const ConfirmdeleteDevice = window.confirm("Chú ý, bạn chưa tạo đối tượng kết nối với thiết bị theo dõi!!!");
+               if (ConfirmdeleteDevice) {      
+               
+                     
+              } else {     
+                ////console.log("Action canceled.");
+              }  
+              success = true; 
           }
         } catch (error) {
           toast.error("Lỗi khi lấy thông tin đối tượng")
@@ -156,16 +165,18 @@ function Detail() {
 
 
     useEffect(() => {  
-      if(phone !== ''){
-          getAllObject()   
+      
+      if(phone !== ''){ 
+       
+          getAllObject()                 
       }  
-    }, [phone])   
+    }, [phone])              
 
     useEffect(() => {  
         const deviceId = getDeviceIdFromURL();              
-        setIdDevice(deviceId)
+        setIdDevice(deviceId)   
         const phoneNumer = sessionStorage.getItem('phoneNumer');  
-        setPhone(phoneNumer)
+        setPhone(phoneNumer)      
     }, [])   
    
     const handleshowModalUpdateFirmware= ()=> {     
@@ -465,7 +476,7 @@ const handleScanAndShow = async () => {
       setisPressedBtnThreshold(true);
       await callAPIUpdateObjecThresholdById(threshold);  
       setTimeout(() => setisPressedBtnThreshold(false), 200); // Giữ hiệu ứng 200ms
-    };
+    };   
 
     const firstRender = useRef(true); // Biến cờ để kiểm tra lần đầu render
     useEffect(() => {
@@ -667,8 +678,6 @@ const CustomTooltip = ({ active, payload }) => {
       getBuzzerStatus(buffer, idDevice)
     },[buffer, idDevice])
 
-
-
     useEffect( () => {
     
           let connection = new signalR.HubConnectionBuilder()   
@@ -786,7 +795,7 @@ const CustomTooltip = ({ active, payload }) => {
 
 
 
-return (
+return (  
     <div className='fatherInforDetailDevice'>    
       <div className='wrapperInforDetailDevice'>   
 
